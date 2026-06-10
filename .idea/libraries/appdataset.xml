@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="appdataset">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/appdataset.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

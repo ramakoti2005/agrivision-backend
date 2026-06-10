@@ -1,0 +1,9 @@
+# Dataset
+appdataset/
+
+# Flutter SDK
+flutter_app/bin/
+
+# Flutter generated files
+flutter_app/.metadata
+flutter_app/pubspec.lock

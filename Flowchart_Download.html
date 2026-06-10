@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>System Flowchart</title>
+    <!-- Load Mermaid.js for drawing the chart -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <!-- Load html2canvas to convert the chart to a JPG -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            text-align: center; 
+            background: #f4f7f6; 
+            padding: 20px; 
+        }
+        #mermaid-container { 
+            background: white; 
+            padding: 40px; 
+            display: inline-block; 
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        button { 
+            padding: 12px 24px; 
+            font-size: 16px; 
+            font-weight: bold;
+            cursor: pointer; 
+            background: #28a745; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Plant Disease Platform - Detailed Flowchart</h2>
+    <p>Click the button below to download this high-resolution flowchart as a JPG file.</p>
+    
+    <button onclick="downloadJPG()">⬇️ Download Flowchart as JPG</button>
+    <br>
+
+    <div id="mermaid-container">
+        <div class="mermaid">
+        flowchart TD
+            %% Input Section
+            A([User Login / Authentication]) --> B([Upload Leaf Image via Web App])
+            B --> C{Image Quality Check}
+            C -- Invalid Image --> B
+            C -- Valid Image --> D[FastAPI Backend Receives Data]
+
+            %% Preprocessing
+            subgraph Preprocessing Pipeline
+                D --> E[Image Resizing 224x224]
+                E --> F[Color Normalization RGB]
+                F --> G[Tensor Conversion]
+            end
+
+            %% Core AI Model
+            subgraph Deep Learning Inference Engine
+                G --> H[Load TensorFlow Keras Model]
+                H --> I[Convolutional Feature Extraction]
+                I --> J[Softmax Disease Classification]
+            end
+
+            %% Analytics
+            subgraph Analytics & Simulation Module
+                J --> K[Identify Specific Disease Class]
+                K --> L[Calculate AI Confidence Score]
+                L --> M[Compute Disease Severity Percentage]
+                M --> N[Simulation: Predict Disease Progression Pathway]
+            end
+
+            %% Storage
+            subgraph Data Management
+                N --> O[(SQLite Database)]
+                O --> P[Store User Scan History]
+                O --> Q[Log Analytics & Diagnostic Results]
+            end
+
+            %% Output
+            subgraph Frontend Visualization
+                N --> R[Generate Treatment Recommendations]
+                R --> S[Update UI Dashboard Real-Time]
+                S --> T[Render Progression Trends & Charts]
+            end
+
+            T --> U([Farmer Views Comprehensive Health Report])
+
+            %% Styling for better looks
+            classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px;
+            classDef start fill:#d4edda,stroke:#28a745,stroke-width:2px;
+            classDef db fill:#cce5ff,stroke:#007bff,stroke-width:2px;
+            
+            class A,B,U start;
+            class O db;
+        </div>
+    </div>
+
+    <script>
+        // Initialize the mermaid chart
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+        
+        // Function to take a screenshot and download as JPG
+        function downloadJPG() {
+            const container = document.querySelector('#mermaid-container');
+            
+            // html2canvas takes a snapshot of the div
+            html2canvas(container, { backgroundColor: '#ffffff', scale: 2 }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'Plant_Disease_Flowchart.jpg';
+                link.href = canvas.toDataURL('image/jpeg', 1.0); // 1.0 means highest quality JPG
+                link.click();
+            });
+        }
+    </script>
+</body>
+</html>
