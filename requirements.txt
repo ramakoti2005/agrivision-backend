@@ -7,5 +7,5 @@ numpy
 sqlalchemy
 passlib[bcrypt]
 python-jose[cryptography]
-tensorflow
-keras
+tensorflow==2.16.1
+keras==3.3.3
