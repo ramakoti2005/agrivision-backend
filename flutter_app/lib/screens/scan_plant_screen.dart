@@ -7,6 +7,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:intl/intl.dart';
+import '../api_config.dart';
 
 class ScanPlantScreen extends StatefulWidget {
   const ScanPlantScreen({super.key});
@@ -79,7 +80,7 @@ class _ScanPlantScreenState extends State<ScanPlantScreen> {
       var request = http.MultipartRequest(
         'POST',
         Uri.parse(
-          'http://10.167.61.84:8000/api/v1/analyze',
+            '${ApiConfig.baseUrl}/api/v1/analyze',
         ),
       );
 

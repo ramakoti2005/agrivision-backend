@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends
-from app import schemas
 from app.services.simulator import simulate_progression
 from app.services.auth import get_current_user
 from app.models import User
+from app import schemas
 
 router = APIRouter()
 

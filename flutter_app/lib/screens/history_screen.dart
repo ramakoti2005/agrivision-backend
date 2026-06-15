@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:intl/intl.dart';
 import 'history_detail_screen.dart';
+import '../api_config.dart';
 
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({super.key});
@@ -19,7 +20,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
   bool _loading = true;
 
-  final String _baseUrl = 'http://10.167.61.84:8000';
+  final String _baseUrl = ApiConfig.baseUrl;
 
   @override
   void initState() {

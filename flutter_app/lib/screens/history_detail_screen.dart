@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../api_config.dart';
 
 class HistoryDetailScreen extends StatelessWidget {
   final Map<String, dynamic> scan;
@@ -22,7 +23,7 @@ class HistoryDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String? imageUrl = scan['image_url'] ?? scan['image_path'] ?? scan['image'];
-    final String baseUrl = 'http://10.167.61.84:8000';
+    final String baseUrl = ApiConfig.baseUrl;
 
     return Scaffold(
       appBar: AppBar(

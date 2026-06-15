@@ -4,8 +4,10 @@ from fastapi.staticfiles import StaticFiles
 from app.api.routes import router as api_router
 from app.api.auth_routes import router as auth_router
 from app.api.simulator_routes import router as simulator_router
+
 from app.database import engine, Base
 from app import models
+
 import os
 import logging
 
